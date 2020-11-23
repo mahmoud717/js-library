@@ -54,13 +54,13 @@ function showBook(title, author, pages, read){
     const deleteBtn = document.createElement("span")
 
     // changing the style and content of the elements
-    bookName.textContent = title
+    bookName.textContent = "Title: " + title
     bookName.classList.add("name")
-    bookAuthor.textContent = author
+    bookAuthor.textContent = "Author: " + author
     bookAuthor.classList.add("author")
-    bookPages.textContent = pages
+    bookPages.textContent = "Book Pages: " + pages
     bookPages.classList.add("pages")
-    bookRead.textContent = read
+    bookRead.textContent = "Read?: " + read
     bookRead.classList.add("read")
     deleteBtn.textContent = "delete"
     deleteBtn.classList.add("delete")

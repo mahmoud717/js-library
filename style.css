@@ -29,6 +29,16 @@ h1, h2{
     display: none;
 }
 
+#book-list ul li span {
+    margin-right: 25px;
+}
+
+#book-list ul li span:nth-child(4) {
+    background-color: green;
+    color: white;
+    padding: 10px 15px;
+}
+
 #wrapper{
     width: 90%;
     max-width: 960px;
