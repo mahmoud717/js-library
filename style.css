@@ -8,6 +8,27 @@ h1, h2{
     font-weight: normal;
 }
 
+.new-book {
+    text-align: center;
+}
+
+.new-book button {
+    padding: 10px;
+    background-color: #9361bf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.new-book button:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+    display: none;
+}
+
 #wrapper{
     width: 90%;
     max-width: 960px;
@@ -76,43 +97,36 @@ h1, h2{
     background: #333;
 }
 
-#add-book{
+#add-book {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    height: 800px;
     width: 400px;
     margin: 0 auto;
 }
 
+#add-book label {
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
 #add-book input{
-    display: block;
-    margin: 20px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    border-radius: 4px 0 0 4px;
-    box-sizing: border-box;
-    width: 300px;
-    float: left;
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 50%;
+    height: 25px;
+    font-size: 18px;
+    padding-left: 8px;
 }
 
 #add-book button{
-    border: 1px solid #9361bf;
-    background: #9361bf;
-    padding: 10px 20px;
-    font-size: 16px;
-    display: inline-block;
-    margin: 0;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    width: 100px;
-    float: left;
-    margin: 20px 0;
-    border-left: 0;
+    background-color: #9361bf;
     color: white;
-}
-
-#add-book:after{
-    content: '';
-    display: block;
-    clear: both;
+    padding: 8px 15px;
+    margin-right: 10px;
+    font-size: 20px;
 }
 
 /*

@@ -10,18 +10,23 @@
 	    <header>
 	    	<div id="page-banner">
 	    		<h1 class="title">Bookorama</h1>
-          <p>Books for Ninjas</p>
-          <form id="search-books">
+          <p>Booklist</p>
+          <!-- <form id="search-books">
             <input type="text" placeholder="Search books..." />
-          </form>
+          </form> -->
 	    	</div>
 	    </header>
 	    <div id="book-list">
 	    	<h2 class="title">Books to Read</h2>
 	    	<ul>
-	    	</ul>
-	    </div>
-	    <form id="add-book">
+				</ul>
+				<div class="new-book">
+					<button>New Book</button>
+				</div>
+			</div>
+		</div>
+		<div class="hidden hidden-form">
+			<form id="add-book">
 			<label for="title">Title</label>
 			<input id="title" type="text" placeholder="Add a book Title..." />
 			<label for="author">Author</label>
@@ -30,10 +35,12 @@
 			<input id="pages" type="number" />
 			<label for="read">Have you read this book?</label>
 			<input id="read" type="checkbox">
-	    	<button class="add-book-button">Add</button>
-	    </form>
-
-    </div>
+			<div>
+				<button class="back-button">Back</button>
+				<button class="add-book-button">Add</button>
+			</div>
+			</form>
+		</div>
     <script src="script.js"></script>
   </body>
 </html>

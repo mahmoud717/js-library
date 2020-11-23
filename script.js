@@ -16,7 +16,7 @@ function addPlaceholderBooks(){
 
 // process data from the form 
 function processForm() {
-    const addBookButton = document.querySelector("#add-book button")
+    const addBookButton = document.querySelector(".add-book-button")
     addBookButton.addEventListener("click", function(e){
     
     // prevent the button default
@@ -33,7 +33,7 @@ function processForm() {
     addBookToLibrary(titleValue, authorValue, pagesValue, readValue)
     // creating new elements
     
-
+    
     })
 }
 
@@ -102,8 +102,26 @@ function removeBookFromLibrary() {
     })
 }
 
+const newBookButton = document.querySelector('.new-book button')
+newBookButton.addEventListener("click", function (e) {
+    const hidden = document.querySelector('.hidden')
+    hidden.classList.remove('hidden')
+    const wrapper = document.querySelector('#wrapper')
+    wrapper.classList.add('hidden')
+    processForm()
+    switchBack()
+})
+
+function switchBack() {
+    const backButton = document.querySelector('.back-button')
+    backButton.addEventListener("click", function (e) {
+    const hidden = document.querySelector('.hidden-form')
+    hidden.classList.add('hidden')
+    const wrapper = document.querySelector('#wrapper')
+    wrapper.classList.remove('hidden')
+})
+}
 
 addPlaceholderBooks()
 renderLibrary()
 removeBookFromLibrary()
-processForm()
