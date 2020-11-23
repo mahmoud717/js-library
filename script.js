@@ -1,6 +1,7 @@
 // create library and constructor
 let library = []
 const $bookList = document.querySelector("ul")
+const $addBookButton = document.querySelector(".add-book-button")
 function book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -16,15 +17,13 @@ function addPlaceholderBooks(){
 
 // process data from the form 
 function processForm() {
-    const addBookButton = document.querySelector(".add-book-button")
-    addBookButton.addEventListener("click", function(e){
-    
+    $addBookButton.addEventListener("click", function(e){
     // prevent the button default
     e.preventDefault()
-
     // query for book list, form 
    
     const addBookForm = document.forms['add-book']
+    console.log(addBookForm)
     const titleValue = addBookForm.querySelector("input#title").value
     const authorValue = addBookForm.querySelector("input#author").value
     const pagesValue = addBookForm.querySelector("input#pages").value
@@ -33,7 +32,7 @@ function processForm() {
     addBookToLibrary(titleValue, authorValue, pagesValue, readValue)
     // creating new elements
     
-    
+    switchBack()
     })
 }
 
@@ -82,6 +81,37 @@ function renderLibrary(){
   });
 }
 
+
+$bookList.addEventListener("click", function(el){
+    console.log(el.target)
+    if (el.target.classList.contains("read")){
+        let li = el.target.parentElement 
+        let title = li.querySelector(".name").textContent
+        let author = li.querySelector(".author").textContent
+        let pages = li.querySelector(".pages").textContent
+        let read = li.querySelector(".read").textContent
+        library.forEach((el, index) => {
+            if (el.title == title && el.author == author && String(el.pages) === pages && String(el.read) === read){
+                if (el.read == true){
+                    el.read = false
+                }
+                else{
+                    el.read = true
+                }
+            }
+        })
+        console.log(library)
+        if (el.target.textContent == "true"){
+            el.target.textContent = "false"
+        }
+        else{
+            el.target.textContent = "true"
+        }
+    }
+})
+function changeReadStatus(el){
+
+}
 // remove book from the library and the page
 function removeBookFromLibrary() {
     $bookList.addEventListener("click",function(e){
@@ -108,20 +138,20 @@ newBookButton.addEventListener("click", function (e) {
     hidden.classList.remove('hidden')
     const wrapper = document.querySelector('#wrapper')
     wrapper.classList.add('hidden')
-    processForm()
+})
+const backButton = document.querySelector('.back-button')
+backButton.addEventListener("click", function(e){
+    e.preventDefault()
     switchBack()
 })
-
 function switchBack() {
-    const backButton = document.querySelector('.back-button')
-    backButton.addEventListener("click", function (e) {
     const hidden = document.querySelector('.hidden-form')
     hidden.classList.add('hidden')
     const wrapper = document.querySelector('#wrapper')
     wrapper.classList.remove('hidden')
-})
 }
 
 addPlaceholderBooks()
 renderLibrary()
 removeBookFromLibrary()
+processForm()
