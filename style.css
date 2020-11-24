@@ -1,0 +1,150 @@
+body{
+    font-family: Tahoma;
+    color: #444;
+    letter-spacing: 1px;
+}
+
+h1, h2{
+    font-weight: normal;
+}
+
+.new-book {
+    text-align: center;
+}
+
+.new-book button {
+    padding: 10px;
+    background-color: #9361bf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.new-book button:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+    display: none;
+}
+
+#book-list ul li span {
+    margin-right: 25px;
+}
+
+#book-list ul li span.label {
+    margin-right: 5px;
+}
+
+#book-list ul li span.read {
+    padding: 10px;
+    background-color: #5e4672;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+#book-list ul li span.read:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+#wrapper{
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 6px;
+    box-shadow: 0px 1px 6px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    padding: 0 0 20px;
+    overflow: hidden;
+    border: 1px solid lightgray;
+}
+
+#page-banner{
+    background: #eee ;
+    padding: 10px 0;
+
+}
+
+#page-banner h1, #page-banner p{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+#page-banner input{
+    width: 90%;
+    max-width: 300px;
+    margin: 20px auto;
+    display: block;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #444;
+}
+
+#book-list, #add-book, #tabbed-content{
+    margin: 30px;
+}
+
+#book-list ul, #tabbed-content ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+#book-list li{
+    padding: 20px;
+    border-left: 5px solid #ddd;
+    margin: 20px 10px;
+}
+
+#book-list li:hover{
+    border-color: #9361bf;
+}
+
+.delete{
+    float: right;
+    background: #9361bf;
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+.delete:hover{
+    background: #333;
+}
+
+#add-book {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    height: 800px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+#add-book label {
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+#add-book input{
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 50%;
+    height: 25px;
+    font-size: 18px;
+    padding-left: 8px;
+}
+
+#add-book button{
+    background-color: #9361bf;
+    color: white;
+    padding: 8px 15px;
+    margin-right: 10px;
+    font-size: 20px;
+}
