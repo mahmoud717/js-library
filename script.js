@@ -36,3 +36,8 @@ function processForm() {
     switchBack()
     })
 }
+function addBookToLibrary(title, author, pages, read) {
+    let newBook = new book(title, author, pages, read)
+    library.push(newBook)
+    showBook(title, author, pages, read)
+}
