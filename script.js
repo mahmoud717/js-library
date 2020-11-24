@@ -8,3 +8,10 @@ function book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 }
+
+// add placeholder books
+function addPlaceholderBooks() {
+    let lordOfTheFlies = new book("Lord of the flies", "William Golding", 345, false)
+    let theHungerGames = new book("The hunger games", "Suzanne Collins", 400, false)
+    library.push(lordOfTheFlies, theHungerGames)
+}
