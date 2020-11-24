@@ -23,7 +23,7 @@ function processForm() {
     // query for book list, form 
    
     const addBookForm = document.forms['add-book']
-    console.log(addBookForm)
+    
     const titleValue = addBookForm.querySelector("input#title").value
     const authorValue = addBookForm.querySelector("input#author").value
     const pagesValue = addBookForm.querySelector("input#pages").value
@@ -48,26 +48,42 @@ function addBookToLibrary(title, author, pages, read) {
 function showBook(title, author, pages, read){
     const li = document.createElement("li")
     const bookName = document.createElement("span")
+    const titleLabel = document.createElement("span")
     const bookAuthor = document.createElement("span")
+    const authorLabel = document.createElement("span")
     const bookPages = document.createElement("span")
+    const pagesLabel = document.createElement("span")
     const bookRead = document.createElement("span")
+    const readLabel = document.createElement("span")
     const deleteBtn = document.createElement("span")
 
     // changing the style and content of the elements
-    bookName.textContent = "Title: " + title
+    bookName.textContent =  title
     bookName.classList.add("name")
-    bookAuthor.textContent = "Author: " + author
+    titleLabel.classList.add("label", "title-label")
+    titleLabel.textContent = "Title:"
+    bookAuthor.textContent = author
     bookAuthor.classList.add("author")
-    bookPages.textContent = "Book Pages: " + pages
+    authorLabel.classList.add("label", "author-label")
+    authorLabel.textContent = "Author:"
+    bookPages.textContent =  pages
     bookPages.classList.add("pages")
-    bookRead.textContent = "Read?: " + read
+    pagesLabel.classList.add("label", "pages-label")
+    pagesLabel.textContent = "Number of Pages:"
+    bookRead.textContent = read
     bookRead.classList.add("read")
+    readLabel.classList.add("label", "read-label")
+    readLabel.textContent = "Read?:"
     deleteBtn.textContent = "delete"
     deleteBtn.classList.add("delete")
 
+    li.appendChild(titleLabel)
     li.appendChild(bookName)
+    li.appendChild(authorLabel)
     li.appendChild(bookAuthor)
+    li.appendChild(pagesLabel)
     li.appendChild(bookPages)
+    li.appendChild(readLabel)
     li.appendChild(bookRead)
     li.appendChild(deleteBtn)
     $bookList.appendChild(li)
@@ -83,7 +99,7 @@ function renderLibrary(){
 
 
 $bookList.addEventListener("click", function(el){
-    console.log(el.target)
+    
     if (el.target.classList.contains("read")){
         let li = el.target.parentElement 
         let title = li.querySelector(".name").textContent
@@ -100,7 +116,7 @@ $bookList.addEventListener("click", function(el){
                 }
             }
         })
-        console.log(library)
+       
         if (el.target.textContent == "true"){
             el.target.textContent = "false"
         }
@@ -124,7 +140,6 @@ function removeBookFromLibrary() {
         library.forEach((el, index) => {
             if (el.title == title && el.author == author && String(el.pages) === pages && String(el.read) === read){
                 library.splice(index, 1)
-                
             }
         })
         li.parentNode.removeChild(li)
