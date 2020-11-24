@@ -2,6 +2,7 @@
 const library = [];
 const $bookList = document.querySelector('ul');
 const $addBookButton = document.querySelector('.add-book-button');
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -10,14 +11,13 @@ function Book(title, author, pages, read) {
 }
 
 // add placeholder books
-function addPlaceholderBooks() {
+let addPlaceholderBooks = () => {
   const lordOfTheFlies = new Book('Lord of the flies', 'William Golding', 345, false);
   const theHungerGames = new Book('The hunger games', 'Suzanne Collins', 400, false);
   library.push(lordOfTheFlies, theHungerGames);
 }
 
-
-function showBook(title, author, pages, read) {
+let showBook = (title, author, pages, read) => {
   const li = document.createElement('li');
   const bookName = document.createElement('span');
   const titleLabel = document.createElement('span');
@@ -60,20 +60,22 @@ function showBook(title, author, pages, read) {
   li.appendChild(deleteBtn);
   $bookList.appendChild(li);
 }
-function switchBack() {
+
+let switchBack = () => {
   const hidden = document.querySelector('.hidden-form');
   hidden.classList.add('hidden');
   const wrapper = document.querySelector('#wrapper');
   wrapper.classList.remove('hidden');
 }
 
-function addBookToLibrary(title, author, pages, read) {
+let addBookToLibrary = (title, author, pages, read) => {
   const newBook = new Book(title, author, pages, read);
   library.push(newBook);
   showBook(title, author, pages, read);
 }
+
 // process data from the form
-function processForm() {
+let processForm = () => {
   $addBookButton.addEventListener('click', (e) => {
     // prevent the button default
     e.preventDefault();
@@ -92,8 +94,9 @@ function processForm() {
     switchBack();
   });
 }
+
 // render all books from library
-function renderLibrary() {
+let renderLibrary = () => {
   $bookList.innerHTML = '';
   library.forEach((el) => {
     showBook(el.title, el.author, el.pages, el.read);
@@ -127,7 +130,7 @@ $bookList.addEventListener('click', (el) => {
 });
 
 // remove book from the library and the page
-function removeBookFromLibrary() {
+let removeBookFromLibrary = () => {
   $bookList.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete')) {
       const li = e.target.parentElement;
