@@ -92,3 +92,31 @@ function renderLibrary(){
         showBook(el.title, el.author, el.pages, el.read)
   });
 }
+
+$bookList.addEventListener("click", function(el){
+    
+    if (el.target.classList.contains("read")){
+        let li = el.target.parentElement 
+        let title = li.querySelector(".name").textContent
+        let author = li.querySelector(".author").textContent
+        let pages = li.querySelector(".pages").textContent
+        let read = li.querySelector(".read").textContent
+        library.forEach((el, index) => {
+            if (el.title == title && el.author == author && String(el.pages) === pages && String(el.read) === read){
+                if (el.read == true){
+                    el.read = false
+                }
+                else{
+                    el.read = true
+                }
+            }
+        })
+       
+        if (el.target.textContent == "true"){
+            el.target.textContent = "false"
+        }
+        else{
+            el.target.textContent = "true"
+        }
+    }
+})
