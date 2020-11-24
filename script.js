@@ -15,3 +15,24 @@ function addPlaceholderBooks() {
     let theHungerGames = new book("The hunger games", "Suzanne Collins", 400, false)
     library.push(lordOfTheFlies, theHungerGames)
 }
+
+// process data from the form 
+function processForm() {
+    $addBookButton.addEventListener("click", function(e){
+    // prevent the button default
+    e.preventDefault()
+    // query for book list, form 
+   
+    const addBookForm = document.forms['add-book']
+    
+    const titleValue = addBookForm.querySelector("input#title").value
+    const authorValue = addBookForm.querySelector("input#author").value
+    const pagesValue = addBookForm.querySelector("input#pages").value
+    let readValue = addBookForm.querySelector("input#read").checked
+
+    addBookToLibrary(titleValue, authorValue, pagesValue, readValue)
+    // creating new elements
+    
+    switchBack()
+    })
+}
