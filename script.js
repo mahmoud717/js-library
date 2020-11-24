@@ -139,3 +139,27 @@ function removeBookFromLibrary() {
     }
     })
 }
+
+const newBookButton = document.querySelector('.new-book button')
+newBookButton.addEventListener("click", function (e) {
+    const hidden = document.querySelector('.hidden')
+    hidden.classList.remove('hidden')
+    const wrapper = document.querySelector('#wrapper')
+    wrapper.classList.add('hidden')
+})
+const backButton = document.querySelector('.back-button')
+backButton.addEventListener("click", function(e){
+    e.preventDefault()
+    switchBack()
+})
+function switchBack() {
+    const hidden = document.querySelector('.hidden-form')
+    hidden.classList.add('hidden')
+    const wrapper = document.querySelector('#wrapper')
+    wrapper.classList.remove('hidden')
+}
+
+addPlaceholderBooks()
+renderLibrary()
+removeBookFromLibrary()
+processForm()
