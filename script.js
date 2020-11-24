@@ -11,97 +11,97 @@ function Book(title, author, pages, read) {
 }
 
 // add placeholder books
-let addPlaceholderBooks = () => {
-  const lordOfTheFlies = new Book('Lord of the flies', 'William Golding', 345, false);
-  const theHungerGames = new Book('The hunger games', 'Suzanne Collins', 400, false);
-  library.push(lordOfTheFlies, theHungerGames);
-}
+const addPlaceholderBooks = () => {
+    const lordOfTheFlies = new Book('Lord of the flies', 'William Golding', 345, false);
+    const theHungerGames = new Book('The hunger games', 'Suzanne Collins', 400, false);
+    library.push(lordOfTheFlies, theHungerGames);
+};
 
-let showBook = (title, author, pages, read) => {
-  const li = document.createElement('li');
-  const bookName = document.createElement('span');
-  const titleLabel = document.createElement('span');
-  const bookAuthor = document.createElement('span');
-  const authorLabel = document.createElement('span');
-  const bookPages = document.createElement('span');
-  const pagesLabel = document.createElement('span');
-  const bookRead = document.createElement('span');
-  const readLabel = document.createElement('span');
-  const deleteBtn = document.createElement('span');
+const showBook = (title, author, pages, read) => {
+    const li = document.createElement('li');
+    const bookName = document.createElement('span');
+    const titleLabel = document.createElement('span');
+    const bookAuthor = document.createElement('span');
+    const authorLabel = document.createElement('span');
+    const bookPages = document.createElement('span');
+    const pagesLabel = document.createElement('span');
+    const bookRead = document.createElement('span');
+    const readLabel = document.createElement('span');
+    const deleteBtn = document.createElement('span');
 
-  // changing the style and content of the elements
-  bookName.textContent = title;
-  bookName.classList.add('name');
-  titleLabel.classList.add('label', 'title-label');
-  titleLabel.textContent = 'Title:';
-  bookAuthor.textContent = author;
-  bookAuthor.classList.add('author');
-  authorLabel.classList.add('label', 'author-label');
-  authorLabel.textContent = 'Author:';
-  bookPages.textContent = pages;
-  bookPages.classList.add('pages');
-  pagesLabel.classList.add('label', 'pages-label');
-  pagesLabel.textContent = 'Number of Pages:';
-  bookRead.textContent = read;
-  bookRead.classList.add('read');
-  readLabel.classList.add('label', 'read-label');
-  readLabel.textContent = 'Read?:';
-  deleteBtn.textContent = 'delete';
-  deleteBtn.classList.add('delete');
+    // changing the style and content of the elements
+    bookName.textContent = title;
+    bookName.classList.add('name');
+    titleLabel.classList.add('label', 'title-label');
+    titleLabel.textContent = 'Title:';
+    bookAuthor.textContent = author;
+    bookAuthor.classList.add('author');
+    authorLabel.classList.add('label', 'author-label');
+    authorLabel.textContent = 'Author:';
+    bookPages.textContent = pages;
+    bookPages.classList.add('pages');
+    pagesLabel.classList.add('label', 'pages-label');
+    pagesLabel.textContent = 'Number of Pages:';
+    bookRead.textContent = read;
+    bookRead.classList.add('read');
+    readLabel.classList.add('label', 'read-label');
+    readLabel.textContent = 'Read?:';
+    deleteBtn.textContent = 'delete';
+    deleteBtn.classList.add('delete');
 
-  li.appendChild(titleLabel);
-  li.appendChild(bookName);
-  li.appendChild(authorLabel);
-  li.appendChild(bookAuthor);
-  li.appendChild(pagesLabel);
-  li.appendChild(bookPages);
-  li.appendChild(readLabel);
-  li.appendChild(bookRead);
-  li.appendChild(deleteBtn);
-  $bookList.appendChild(li);
-}
+    li.appendChild(titleLabel);
+    li.appendChild(bookName);
+    li.appendChild(authorLabel);
+    li.appendChild(bookAuthor);
+    li.appendChild(pagesLabel);
+    li.appendChild(bookPages);
+    li.appendChild(readLabel);
+    li.appendChild(bookRead);
+    li.appendChild(deleteBtn);
+    $bookList.appendChild(li);
+};
 
-let switchBack = () => {
-  const hidden = document.querySelector('.hidden-form');
-  hidden.classList.add('hidden');
-  const wrapper = document.querySelector('#wrapper');
-  wrapper.classList.remove('hidden');
-}
+const switchBack = () => {
+    const hidden = document.querySelector('.hidden-form');
+    hidden.classList.add('hidden');
+    const wrapper = document.querySelector('#wrapper');
+    wrapper.classList.remove('hidden');
+};
 
-let addBookToLibrary = (title, author, pages, read) => {
-  const newBook = new Book(title, author, pages, read);
-  library.push(newBook);
-  showBook(title, author, pages, read);
-}
+const addBookToLibrary = (title, author, pages, read) => {
+    const newBook = new Book(title, author, pages, read);
+    library.push(newBook);
+    showBook(title, author, pages, read);
+};
 
 // process data from the form
-let processForm = () => {
-  $addBookButton.addEventListener('click', (e) => {
-    // prevent the button default
-    e.preventDefault();
-    // query for book list, form
+const processForm = () => {
+    $addBookButton.addEventListener('click', (e) => {
+        // prevent the button default
+        e.preventDefault();
+        // query for book list, form
 
-    const addBookForm = document.forms['add-book'];
+        const addBookForm = document.forms['add-book'];
 
-    const titleValue = addBookForm.querySelector('input#title').value;
-    const authorValue = addBookForm.querySelector('input#author').value;
-    const pagesValue = addBookForm.querySelector('input#pages').value;
-    const readValue = addBookForm.querySelector('input#read').checked;
+        const titleValue = addBookForm.querySelector('input#title').value;
+        const authorValue = addBookForm.querySelector('input#author').value;
+        const pagesValue = addBookForm.querySelector('input#pages').value;
+        const readValue = addBookForm.querySelector('input#read').checked;
 
-    addBookToLibrary(titleValue, authorValue, pagesValue, readValue);
-    // creating new elements
+        addBookToLibrary(titleValue, authorValue, pagesValue, readValue);
+        // creating new elements
 
-    switchBack();
-  });
-}
+        switchBack();
+    });
+};
 
 // render all books from library
-let renderLibrary = () => {
-  $bookList.innerHTML = '';
-  library.forEach((el) => {
-    showBook(el.title, el.author, el.pages, el.read);
-  });
-}
+const renderLibrary = () => {
+    $bookList.innerHTML = '';
+    library.forEach((el) => {
+        showBook(el.title, el.author, el.pages, el.read);
+    });
+};
 
 $bookList.addEventListener('click', (el) => {
   if (el.target.classList.contains('read')) {
@@ -130,24 +130,24 @@ $bookList.addEventListener('click', (el) => {
 });
 
 // remove book from the library and the page
-let removeBookFromLibrary = () => {
-  $bookList.addEventListener('click', (e) => {
-    if (e.target.classList.contains('delete')) {
-      const li = e.target.parentElement;
-      const title = li.querySelector('.name').textContent;
-      const author = li.querySelector('.author').textContent;
-      const pages = li.querySelector('.pages').textContent;
-      const read = li.querySelector('.read').textContent;
-      library.forEach((el, index) => {
-        if (el.title === title && el.author === author
-             && String(el.pages) === pages && String(el.read) === read) {
-          library.splice(index, 1);
+const removeBookFromLibrary = () => {
+    $bookList.addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete')) {
+            const li = e.target.parentElement;
+            const title = li.querySelector('.name').textContent;
+            const author = li.querySelector('.author').textContent;
+            const pages = li.querySelector('.pages').textContent;
+            const read = li.querySelector('.read').textContent;
+            library.forEach((el, index) => {
+                if (el.title === title && el.author === author
+                    && String(el.pages) === pages && String(el.read) === read) {
+                    library.splice(index, 1);
+                }
+            });
+            li.parentNode.removeChild(li);
         }
-      });
-      li.parentNode.removeChild(li);
-    }
-  });
-}
+    });
+};
 
 const newBookButton = document.querySelector('.new-book button');
 newBookButton.addEventListener('click', () => {
