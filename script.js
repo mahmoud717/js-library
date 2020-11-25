@@ -6,7 +6,7 @@ const book = (title, author, pages, read) => {
 };
 
 // add placeholder books
-const addPlaceholderBooks = (() => {
+(function addPlaceholderBooks() {
   const lordOfTheFlies = book('Lord of the flies', 'William Golding', 345, false);
   const theHungerGames = book('The hunger games', 'Suzanne Collins', 400, false);
   library.push(lordOfTheFlies, theHungerGames);
@@ -86,7 +86,7 @@ const switchBack = () => {
 };
 
 // process data from the form
-const processForm = (() => {
+(function processForm() {
   const addBookButton = document.querySelector('.add-book-button');
   addBookButton.addEventListener('click', (e) => {
     // prevent the button default
@@ -144,7 +144,7 @@ bookList.addEventListener('click', (el) => {
 });
 
 // remove book from the library and the page
-const removeBookFromLibrary = (() => {
+(function removeBookFromLibrary() {
   bookList.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete')) {
       const li = e.target.parentElement;
