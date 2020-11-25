@@ -9,7 +9,7 @@ function Book(title, author, pages, read) {
     author,
     pages,
     read,
-    showBook(title, author, pages, read) {
+    showBook() {
       const li = document.createElement('li');
       const bookName = document.createElement('span');
       const titleLabel = document.createElement('span');
@@ -22,19 +22,19 @@ function Book(title, author, pages, read) {
       const deleteBtn = document.createElement('span');
 
       // changing the style and content of the elements
-      bookName.textContent = title;
+      bookName.textContent = this.title;
       bookName.classList.add('name');
       titleLabel.classList.add('label', 'title-label');
       titleLabel.textContent = 'Title:';
-      bookAuthor.textContent = author;
+      bookAuthor.textContent = this.author;
       bookAuthor.classList.add('author');
       authorLabel.classList.add('label', 'author-label');
       authorLabel.textContent = 'Author:';
-      bookPages.textContent = pages;
+      bookPages.textContent = this.pages;
       bookPages.classList.add('pages');
       pagesLabel.classList.add('label', 'pages-label');
       pagesLabel.textContent = 'Number of Pages:';
-      bookRead.textContent = read;
+      bookRead.textContent = this.read;
       bookRead.classList.add('read');
       readLabel.classList.add('label', 'read-label');
       readLabel.textContent = 'Read?:';
@@ -58,17 +58,10 @@ function Book(title, author, pages, read) {
 // add placeholder books
 
 
-const switchBack = () => {
-  const hidden = document.querySelector('.hidden-form');
-  hidden.classList.add('hidden');
-  const wrapper = document.querySelector('#wrapper');
-  wrapper.classList.remove('hidden');
-};
-
 const addBookToLibrary = (title, author, pages, read) => {
   const newBook = new Book(title, author, pages, read);
   library.push(newBook);
-  newBook.showBook(title, author, pages, read);
+  newBook.showBook();
 };
 
 bookList.addEventListener('click', (el) => {
@@ -97,16 +90,23 @@ bookList.addEventListener('click', (el) => {
   }
 });
 
-// remove book from the library and the page
-
-
-const newBookButton = document.querySelector('.new-book button');
-newBookButton.addEventListener('click', () => {
+const switchView = () => {
   const hidden = document.querySelector('.hidden');
   hidden.classList.remove('hidden');
   const wrapper = document.querySelector('#wrapper');
   wrapper.classList.add('hidden');
-});
+};
+
+const switchBack = () => {
+  const hidden = document.querySelector('.hidden-form');
+  hidden.classList.add('hidden');
+  const wrapper = document.querySelector('#wrapper');
+  wrapper.classList.remove('hidden');
+};
+// remove book from the library and the page
+
+const newBookButton = document.querySelector('.new-book button');
+newBookButton.addEventListener('click', () => { switchView(); });
 const backButton = document.querySelector('.back-button');
 backButton.addEventListener('click', (e) => {
   e.preventDefault();
@@ -123,7 +123,7 @@ backButton.addEventListener('click', (e) => {
 (function renderLibrary() {
   bookList.innerHTML = '';
   library.forEach((el) => {
-    el.showBook(el.title, el.author, el.pages, el.read);
+    el.showBook();
   });
 }());
 
