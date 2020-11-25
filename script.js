@@ -1,22 +1,39 @@
 // create library and constructor
 const library = [];
-const $bookList = document.querySelector('ul');
-const $addBookButton = document.querySelector('.add-book-button');
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
-
-// add placeholder books
-const addPlaceholderBooks = () => {
-  const lordOfTheFlies = new Book('Lord of the flies', 'William Golding', 345, false);
-  const theHungerGames = new Book('The hunger games', 'Suzanne Collins', 400, false);
-  library.push(lordOfTheFlies, theHungerGames);
+const book = (title, author, pages, read) => {
+  return { title, author, pages, read };
 };
 
+// add placeholder books
+const addPlaceholderBooks = (() => {
+  const lordOfTheFlies = book('Lord of the flies', 'William Golding', 345, false);
+  const theHungerGames = book('The hunger games', 'Suzanne Collins', 400, false);
+  library.push(lordOfTheFlies, theHungerGames);
+})();
+
+const newBookButton = document.querySelector('.new-book button');
+newBookButton.addEventListener('click', () => {
+  const hidden = document.querySelector('.hidden');
+  hidden.classList.remove('hidden');
+  const wrapper = document.querySelector('#wrapper');
+  wrapper.classList.add('hidden');
+});
+
+const backButton = document.querySelector('.back-button');
+backButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  switchBack();
+});
+
+// add book to library array
+const addBookToLibrary = (title, author, pages, read) => {
+  const newBook = book(title, author, pages, read);
+  library.push(newBook);
+  showBook(title, author, pages, read);
+};
+
+// create new book in HTML
 const showBook = (title, author, pages, read) => {
   const li = document.createElement('li');
   const bookName = document.createElement('span');
@@ -58,7 +75,7 @@ const showBook = (title, author, pages, read) => {
   li.appendChild(readLabel);
   li.appendChild(bookRead);
   li.appendChild(deleteBtn);
-  $bookList.appendChild(li);
+  bookList.appendChild(li);
 };
 
 const switchBack = () => {
@@ -68,15 +85,10 @@ const switchBack = () => {
   wrapper.classList.remove('hidden');
 };
 
-const addBookToLibrary = (title, author, pages, read) => {
-  const newBook = new Book(title, author, pages, read);
-  library.push(newBook);
-  showBook(title, author, pages, read);
-};
-
 // process data from the form
-const processForm = () => {
-  $addBookButton.addEventListener('click', (e) => {
+const processForm = (() => {
+  const addBookButton = document.querySelector('.add-book-button');
+  addBookButton.addEventListener('click', (e) => {
     // prevent the button default
     e.preventDefault();
     // query for book list, form
@@ -93,17 +105,19 @@ const processForm = () => {
 
     switchBack();
   });
-};
+})();
 
 // render all books from library
 const renderLibrary = () => {
-  $bookList.innerHTML = '';
+  bookList.innerHTML = '';
   library.forEach((el) => {
     showBook(el.title, el.author, el.pages, el.read);
   });
 };
 
-$bookList.addEventListener('click', (el) => {
+// change read status to true or false
+const bookList = document.querySelector('ul');
+bookList.addEventListener('click', (el) => {
   if (el.target.classList.contains('read')) {
     const li = el.target.parentElement;
     const title = li.querySelector('.name').textContent;
@@ -130,8 +144,8 @@ $bookList.addEventListener('click', (el) => {
 });
 
 // remove book from the library and the page
-const removeBookFromLibrary = () => {
-  $bookList.addEventListener('click', (e) => {
+const removeBookFromLibrary = (() => {
+  bookList.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete')) {
       const li = e.target.parentElement;
       const title = li.querySelector('.name').textContent;
@@ -147,22 +161,6 @@ const removeBookFromLibrary = () => {
       li.parentNode.removeChild(li);
     }
   });
-};
+})();
 
-const newBookButton = document.querySelector('.new-book button');
-newBookButton.addEventListener('click', () => {
-  const hidden = document.querySelector('.hidden');
-  hidden.classList.remove('hidden');
-  const wrapper = document.querySelector('#wrapper');
-  wrapper.classList.add('hidden');
-});
-const backButton = document.querySelector('.back-button');
-backButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  switchBack();
-});
-
-addPlaceholderBooks();
 renderLibrary();
-removeBookFromLibrary();
-processForm();
