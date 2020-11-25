@@ -3,59 +3,58 @@ const library = [];
 const bookList = document.querySelector('ul');
 const addBookButton = document.querySelector('.add-book-button');
 
-function Book(title, author, pages, read) {
-  return {
-    title,
-    author,
-    pages,
-    read,
-    showBook() {
-      const li = document.createElement('li');
-      const bookName = document.createElement('span');
-      const titleLabel = document.createElement('span');
-      const bookAuthor = document.createElement('span');
-      const authorLabel = document.createElement('span');
-      const bookPages = document.createElement('span');
-      const pagesLabel = document.createElement('span');
-      const bookRead = document.createElement('span');
-      const readLabel = document.createElement('span');
-      const deleteBtn = document.createElement('span');
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
-      // changing the style and content of the elements
-      bookName.textContent = this.title;
-      bookName.classList.add('name');
-      titleLabel.classList.add('label', 'title-label');
-      titleLabel.textContent = 'Title:';
-      bookAuthor.textContent = this.author;
-      bookAuthor.classList.add('author');
-      authorLabel.classList.add('label', 'author-label');
-      authorLabel.textContent = 'Author:';
-      bookPages.textContent = this.pages;
-      bookPages.classList.add('pages');
-      pagesLabel.classList.add('label', 'pages-label');
-      pagesLabel.textContent = 'Number of Pages:';
-      bookRead.textContent = this.read;
-      bookRead.classList.add('read');
-      readLabel.classList.add('label', 'read-label');
-      readLabel.textContent = 'Read?:';
-      deleteBtn.textContent = 'delete';
-      deleteBtn.classList.add('delete');
+  showBook() {
+    const li = document.createElement('li');
+    const bookName = document.createElement('span');
+    const titleLabel = document.createElement('span');
+    const bookAuthor = document.createElement('span');
+    const authorLabel = document.createElement('span');
+    const bookPages = document.createElement('span');
+    const pagesLabel = document.createElement('span');
+    const bookRead = document.createElement('span');
+    const readLabel = document.createElement('span');
+    const deleteBtn = document.createElement('span');
 
-      li.appendChild(titleLabel);
-      li.appendChild(bookName);
-      li.appendChild(authorLabel);
-      li.appendChild(bookAuthor);
-      li.appendChild(pagesLabel);
-      li.appendChild(bookPages);
-      li.appendChild(readLabel);
-      li.appendChild(bookRead);
-      li.appendChild(deleteBtn);
-      bookList.appendChild(li);
-    },
-  };
+    // changing the style and content of the elements
+    bookName.textContent = this.title;
+    bookName.classList.add('name');
+    titleLabel.classList.add('label', 'title-label');
+    titleLabel.textContent = 'Title:';
+    bookAuthor.textContent = this.author;
+    bookAuthor.classList.add('author');
+    authorLabel.classList.add('label', 'author-label');
+    authorLabel.textContent = 'Author:';
+    bookPages.textContent = this.pages;
+    bookPages.classList.add('pages');
+    pagesLabel.classList.add('label', 'pages-label');
+    pagesLabel.textContent = 'Number of Pages:';
+    bookRead.textContent = this.read;
+    bookRead.classList.add('read');
+    readLabel.classList.add('label', 'read-label');
+    readLabel.textContent = 'Read?:';
+    deleteBtn.textContent = 'delete';
+    deleteBtn.classList.add('delete');
+
+    li.appendChild(titleLabel);
+    li.appendChild(bookName);
+    li.appendChild(authorLabel);
+    li.appendChild(bookAuthor);
+    li.appendChild(pagesLabel);
+    li.appendChild(bookPages);
+    li.appendChild(readLabel);
+    li.appendChild(bookRead);
+    li.appendChild(deleteBtn);
+    bookList.appendChild(li);
+  }
 }
-
-// add placeholder books
 
 
 const addBookToLibrary = (title, author, pages, read) => {
